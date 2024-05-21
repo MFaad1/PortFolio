@@ -26,3 +26,56 @@ div.id = "preloader",
     document.body.insertBefore(div, document.body.firstChild), window.onload = function() {
         document.getElementById("preloader").classList.add("off")
     };
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const fullName = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+    
+        const data = {
+            fullName,
+            email,
+            subject,
+            message
+        };
+    
+        fetch('https://mail-sender-zeta.vercel.app/api/sendEmail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text())  // Change to .text() to handle plain text response
+        .then(result => {
+            console.log(result, "result");
+    
+            const successMsg = document.querySelector('.alert-success');
+            console.log(successMsg, "successMsg");
+    
+            successMsg.style.display = 'block';
+            successMsg.innerText = 'Your message was sent successfully.';
+    
+            // Hide the success message after 2 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 2000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error sending your message. Please try again.');
+            const successMsg = document.querySelector('.alert-error');
+    
+            successMsg.style.display = 'block';
+            successMsg.innerText = 'There was an error sending your message. Please try again..';
+    
+            // Hide the success message after 2 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 2000);
+        });
+    });
+    
