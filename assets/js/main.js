@@ -49,10 +49,10 @@ div.id = "preloader",
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.text())  // Change to .text() to handle plain text response
+        .then(response => response.text()) 
         .then(result => {
             console.log(result, "result");
-    
+  
             const successMsg = document.querySelector('.alert-success');
             console.log(successMsg, "successMsg");
     
@@ -60,14 +60,16 @@ div.id = "preloader",
             successMsg.innerText = 'Your message was sent successfully.';
     
             // Hide the success message after 2 seconds
+            document.getElementById('contactForm').reset();
+
             setTimeout(() => {
                 successMsg.style.display = 'none';
             }, 2000);
         })
+        
         .catch(error => {
             console.error('Error:', error);
-            alert('There was an error sending your message. Please try again.');
-            const successMsg = document.querySelector('.alert-error');
+            const successMsg = document.querySelector('.alert-danger');
     
             successMsg.style.display = 'block';
             successMsg.innerText = 'There was an error sending your message. Please try again..';
