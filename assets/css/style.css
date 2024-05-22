@@ -223,6 +223,7 @@ ol {
     z-index: 9;
 }
 
+
 .credential-area .credential-sidebar .bg-img,
 .contact-area .contact-form .bg-img,
 .project-details-wrap .project-about-2 .bg-img,
@@ -635,7 +636,7 @@ ol {
 }
 
 .about-area .about-image-box {
-    width: 370px;
+    width: 420px;
     flex: none;
     padding: 24px;
     border-radius: 30px;
@@ -644,6 +645,12 @@ ol {
 .about-area .about-image-box .image-inner {
     background: linear-gradient(90deg, #3C58E3 -15%, #C2EBFF 58%, #5AB5E2 97%);
     border-radius: 30px;
+    height: 100%;
+}
+
+.image-inner img{
+    height: 100%;
+    width: 100%;
 }
 
 .about-area .about-image-box img {
@@ -656,7 +663,7 @@ ol {
 }
 
 .about-area .about-details .about-details-inner {
-    padding: 115px 60px 30px 30px;
+    padding: 85px 60px 30px 30px;
     position: relative;
 }
 
@@ -2086,11 +2093,15 @@ ol {
         grid-template-columns: 1fr;
     }
     .about-area .about-image-box {
-        max-width: 370px;
+        max-width: 410px;
         width: 100%;
     }
     .about-area .about-image-box {
         padding: 15px;
+    }
+
+    .AboutImage{
+        height: 400px !important;
     }
     .about-area .about-details .about-details-inner h1,
     .section-heading {
@@ -2181,4 +2192,11 @@ ol {
     .blog-details-area .blog-details-content .comments-and-form-wrap .comments .children {
         padding-left: 0;
     }
+}
+
+
+
+.aboutContainer-main{
+    height: 400px;
+
 }
